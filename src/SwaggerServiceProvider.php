@@ -17,7 +17,7 @@ class SwaggerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/config/swagger.php' => config_path('courier.php'),
+            __DIR__ . '/../config/swagger.php' => config_path('courier.php'),
         ]);
 
         if ($this->app->runningInConsole()) {
