@@ -4,22 +4,22 @@ use App\Support\Classes\SwaggerMakeToken;
 
 return [
     /*
-     * Версия OpenApi
+     * Version OpenApi
      */
     'openapi' => '3.0.0',
 
     /*
-     * Блок информации
+     * Information
      */
     'info' => [
-        'title' => 'Fashion API',
-        'description' => 'Документация к API сервиса Fashion',
+        'title' => 'API documentation',
+        'description' => 'API documentation',
         'version' => '1.0.0',
-        'termsOfService' => 'https://openweathermap.org/terms',
+        'termsOfService' => 'https://example.com/terms',
         'contact' => [
-            'name' => 'test',
+            'name' => 'example',
             'url' => 'https://example.com',
-            'email' => 'email@mail.ru',
+            'email' => 'example@mail.ru',
         ],
         'license' => [
             'name' => 'CC Attribution-ShareAlike 4.0 (CC BY-SA 4.0)',
@@ -28,7 +28,7 @@ return [
     ],
 
     /*
-     * Схемы авторизации
+     * authorization schemes
      */
     'securitySchemes' => [
         'passport' => [
@@ -36,53 +36,53 @@ return [
             'in' => 'header',
             'name' => 'Authorization',
             'scheme' => 'Bearer',
-            'description' => 'Для авторизации используйте ключ ',
+            'description' => 'To authorize, use the key ',
         ],
         'sanctum' => [
             'type' => 'http',
             'in' => 'header',
             'name' => 'Authorization',
             'scheme' => 'Bearer',
-            'description' => 'Для авторизации используйте ключ ',
+            'description' => 'To authorize, use the key ',
         ],
     ],
 
     /*
-     * Сервера для выполнения запросов
+     * Servers for executing requests
      */
     'servers' => [
         [
             'url' => env('APP_URL'),
-            'description' => 'Сервер для тестирования',
+            'description' => 'Server for testing',
         ],
     ],
 
     'auth' => [
         /*
-         * Есть ли авторизация
+         * Is there authorization
          */
         'has_auth' => true,
 
         /*
-         * ПО, которое проверяет авторизацию для маршрута
+         * Software that checks authorization for a route
          */
         'middleware' => 'auth.api',
 
         /*
-         * Схема для авторизации
+         * Authorization scheme
          */
         'security_schema' => 'passport',
 
         /*
-         * Метод для получения токена(ов) для авторизации
+         * Method for obtaining token(s) for authorization
          */
         'make_token' => [
-            'action' => SwaggerMakeToken::class,
+            'action' => 'makeTokenFunction',
         ],
     ],
 
     /*
-     * Информация по хранению файлов с данными после тестирования
+     * Information on storing data files after testing
      */
     'storage' => [
         'driver' => 'local',
@@ -90,33 +90,33 @@ return [
     ],
 
     /*
-     * Первый ключ, который не относится к ресурсам
+     * First key that does not refer to resources
      */
-    'pre_key' => 'data',
+    'pre_key' => '',
 
     'resources_keys' => [
         /*
-         * Есть ли у ресурсов ключ
+         * Do resources have a key
          */
-        'has_pre_key' => true,
+        'has_pre_key' => false,
 
         /*
-         * Использование свойство wrap в качестве имени ресурса
+         * Using the wrap property as a resource name
          */
-        'use_wrap' => false,
+        'use_wrap' => true,
     ],
 
     /*
-     * Описание кодов ответа
+     * Description of response codes
      */
     'codes' => [
-        200 => 'Запрос выполнен успешно',
-        201 => 'Объект успешно создан',
-        204 => 'Нет контента',
-        401 => 'Нет авторизации',
-        403 => 'Нет прав',
-        404 => 'Нет страницы',
-        422 => 'Ошибка валидации данных',
-        500 => 'Ошибка сервера',
+        200 => 'Request completed successfully',
+        201 => 'Object created successfully',
+        204 => 'Not content',
+        401 => 'Not authentication',
+        403 => 'Not authorization',
+        404 => 'Not found',
+        422 => 'Data validation error',
+        500 => 'Server error',
     ],
 ];
