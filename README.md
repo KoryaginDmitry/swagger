@@ -480,7 +480,7 @@ Example:
 
 ### FormRequest
 
-The attribute is needed to indicate the FormRequest class by which data will be collected to describe the parameters passed in the request
+The attribute describes the parameter that is passed in the request or returned in the response
 
 Applicable:
 
