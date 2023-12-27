@@ -232,6 +232,11 @@ Resource
             'name' => $this->name        
         ]       
     }
+
+    public function boot(): void
+    {
+        JsonResource::withoutWrapping();
+    }
 ```
 
 Configuration
