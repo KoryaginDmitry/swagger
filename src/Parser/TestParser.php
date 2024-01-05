@@ -41,7 +41,7 @@ class TestParser
             'content' => $testResponse->getContent(),
             'authorization' => config('swagger.auth.has_auth') && in_array(config('swagger.auth.middleware'), $route?->middleware(), true),
             'path' => str_replace('?', '', $route?->uri),
-            'body' => request()->all(),
+            'body' => (array)json_decode(request()->getContent()),
             'body_query' => request()->route()->parameters(),
             'method' => $route?->methods()[0],
         ];
